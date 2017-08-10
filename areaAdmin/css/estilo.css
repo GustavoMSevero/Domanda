@@ -1,0 +1,55 @@
+.tituloPainelDeCadastro{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.titulo{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.formCadastro{
+	margin-top: 20px;
+
+}
+
+.btnRegister{
+	margin-top: 20px;
+}
+
+.msgSucesso{
+	text-align: center;
+	color: #0000e6;
+}
+
+.msgSuccess{
+	text-align: center;
+	color: #0000e6;
+	margin-top: 10px;
+}
+
+
+.links{
+	margin-bottom: 20px;
+	text-align: center;
+}
+.linkMenu{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+.linkUnidade{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+.linkMesa{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+.linkQuarto{
+	margin-left: 1%;
+	margin-right: 1%;
+}
+.linkCabeleireiro{
+	margin-left: 1%;
+	margin-right: 1%;
+}

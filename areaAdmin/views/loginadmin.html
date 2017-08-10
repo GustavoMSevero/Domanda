@@ -1,0 +1,63 @@
+<style type="text/css">
+.formularioLogin{
+	margin-top: 100px;
+}
+
+.btnLogar{
+	margin-top: 20px;
+}
+
+.msgErro{
+	text-align: center;
+	margin-top: 10px;
+}
+
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<form class="form-signin formularioLogin">
+
+				<h3 align="center">Domanda</h3>
+
+				<label>Tipo</label>
+				<select class="form-control" name="tipo" ng-model="admin.tipo">
+					<option value="">Selecione o tipo</option>
+					<option value="Cabeleireiro">Cabeleireiro</option>
+					<option value="Barbeiro">Barbeiro</option>
+					<option value="Estetica">Estética</option>
+					<option value="Casa de massagem">Casa de massagem</option>
+					<option value="Restaurante">Restaurante</option>
+				</select>
+
+				<label>E-mail do Estabelecimento</label>
+				<div>
+					<input class="form-control" type="email" name="email" ng-model="admin.email"
+					placeholder="barbarshop@barbershop.com.br">
+				</div>
+				<label>Estabelecimento</label>
+				<div>
+					<input class="form-control" type="text" name="Estabelecimento" ng-model="admin.name" placeholder="Barber Shop">
+				</div>
+
+				<label>Senha</label>
+				<div>
+					<input class="form-control adminSenha" type="password" ng-model="admin.password">
+				</div>
+
+				<button class="btn btn-block btn-success btnLogar" ng-click="logar(admin)">Entrar</button>
+				<div class="msgErro">{{ msgErro }}</div>
+
+				<button class="btn btn-block btn-primary btnLogar" ng-click="cadastrar(admin)">Cadastrar</button>
+				
+			</form>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</div>

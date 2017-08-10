@@ -1,0 +1,77 @@
+<style type="text/css">
+.titulo{
+	text-align: center;
+	margin-top: 10px;
+}
+
+.busca{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.formProcurar{
+	text-align: center;
+}
+
+.nome{
+	width: 15%;
+	display: inline-block;
+}
+
+.funcao{
+	width: 20%;
+	display: inline-block;
+}
+
+.exibePros{
+	margin-top: 30px;
+}
+
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 titulo">
+			<h3>Agenda</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12"></div>
+			<div ng-include="'views/linksCabeleireiros.html'"></div>
+		</div>
+	</div>
+	<div class="row" ng-controller="AgendaCtrl">
+		<div class="col-md-12">
+			<div class="busca">
+				<h4>Procure profissional por nome ou função</h4>
+			</div>
+			<form name="formProcurar" class="formProcurar">
+				<label>Nome</label>
+				<input class="form-control nome" type="text" name="nome" ng-model="pro.nome">
+				<label>Função</label>
+				<input class="form-control funcao" type="text" name="funcao" ng-model="pro.funcao">
+				<button class="btn btn-primary" ng-click="buscar(pro)">Buscar</button>
+			</form>
+		</div>
+		<div class="col-md-12 exibePros">
+			<table width="500" align="center">
+				<thead>
+					<tr>
+						<td><b>Nome</b></td>
+						<td><b>Função</b></td>
+						<td><b>Unidade</b></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="p in profs">
+						<td><a href="#/editarContaEntrada/{{p.idprofissional}}">{{p.nome}}</a></td>
+						<td>{{p.funcao}}</td>
+						<td>{{p.unidade}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+</div>
+
+
