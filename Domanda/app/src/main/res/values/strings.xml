@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Domanda</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_buscar">BuscarActivity</string>
+    <string name="title_activity_profisional">ProfisionalActivity</string>
+</resources>
