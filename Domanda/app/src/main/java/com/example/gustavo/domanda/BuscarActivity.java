@@ -60,7 +60,7 @@ public class BuscarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EstabelecimentoPojo e = (EstabelecimentoPojo) lvEstabelecimentos.getItemAtPosition(position);
                 Intent it = new Intent(BuscarActivity.this, UnidadeActivity.class);
-                //it.putExtra("estab", e);
+                it.putExtra("estab", e);
                 startActivity(it);
             }
         });

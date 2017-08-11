@@ -4,4 +4,6 @@
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_buscar">BuscarActivity</string>
     <string name="title_activity_profisional">ProfisionalActivity</string>
+    <string name="title_activity_agendamento">AgendamentoActivity</string>
+    <string name="title_activity_estabelecimento">EstabelecimentoActivity</string>
 </resources>

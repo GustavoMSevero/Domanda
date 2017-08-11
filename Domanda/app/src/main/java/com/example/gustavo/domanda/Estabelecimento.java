@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Estabelecimento implements Serializable {
+
     private Integer idEstabelecimento;
     private String estabelecimento;
     private String endereco;

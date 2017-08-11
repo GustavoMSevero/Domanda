@@ -1,14 +1,11 @@
 package com.example.gustavo.domanda;
 
-/**
- * Created by Gustavo on 10/08/17.
- */
-
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class EstabelecimentoPojo {
-
+public class EstabelecimentoPojo implements Serializable
+{
     @SerializedName("idestabelecimento")
     @Expose
     public String idestabelecimento;
@@ -27,6 +24,7 @@ public class EstabelecimentoPojo {
     @SerializedName("uf")
     @Expose
     public String uf;
+    private final static long serialVersionUID = -5159666548259993357L;
 
     public String toString(){
         return idestabelecimento+"\n"+nome+"\n"+end+", "+num+"\n"+cid+"/"+uf;
@@ -79,5 +77,4 @@ public class EstabelecimentoPojo {
     public void setUf(String uf) {
         this.uf = uf;
     }
-
 }

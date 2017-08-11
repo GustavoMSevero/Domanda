@@ -33,6 +33,14 @@
         <activity
             android:name=".ProfisionalActivity"
             android:label="@string/title_activity_profisional"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AgendamentoActivity"
+            android:label="@string/title_activity_agendamento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EstabelecimentoActivity"
+            android:label="@string/title_activity_estabelecimento"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

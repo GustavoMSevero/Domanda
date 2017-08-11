@@ -52,6 +52,7 @@ public class UnidadeActivity extends AppCompatActivity {
                     un.numero = response[i].numero;
                     uni.add(un);
                 }
+
                 ArrayAdapter<UnidadePojo> adapter = new ArrayAdapter<UnidadePojo>(UnidadeActivity.this, android.R.layout.simple_expandable_list_item_1, uni);
                 lvUni = (ListView) findViewById(R.id.lvUnidades);
                 lvUni.setAdapter(adapter);
