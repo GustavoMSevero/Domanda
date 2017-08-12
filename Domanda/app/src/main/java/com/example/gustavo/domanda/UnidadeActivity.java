@@ -1,8 +1,11 @@
 package com.example.gustavo.domanda;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,19 +31,29 @@ public class UnidadeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_unidade);
 
         e = (EstabelecimentoPojo) getIntent().getSerializableExtra("estab");
-        Log.d("regys",e.toString());
+        //Log.d("regys",e.toString());
         Log.d("ID ESTAB: ",e.getIdestabelecimento());
 
         getUnidades(e.getIdestabelecimento());
 
         lvUni = (ListView)findViewById(R.id.lvUnidades);
+
+        lvUni.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                UnidadePojo u = (UnidadePojo) lvUni.getItemAtPosition(position);
+                Intent it = new Intent(UnidadeActivity.this, ProfissionalActivity.class);
+                it.putExtra("unid", u);
+                startActivity(it);
+            }
+        });
     }
 
     public void getUnidades(final String idestabelecimento){
         final ArrayList<UnidadePojo> uni = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
         GsonRequest<UnidadePojo[]> request = new GsonRequest<>("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqUnitJson.php?" +
-                "idestabelecimento=" + e.idestabelecimento, UnidadePojo[].class, null, new Response.Listener<UnidadePojo[]>() {
+                "idestabelecimento=" + idestabelecimento, UnidadePojo[].class, null, new Response.Listener<UnidadePojo[]>() {
             @Override
             public void onResponse(UnidadePojo[] response) {
 
@@ -51,11 +64,14 @@ public class UnidadeActivity extends AppCompatActivity {
                     un.endereco = response[i].endereco;
                     un.numero = response[i].numero;
                     uni.add(un);
+                    Log.d("TAG","dentro for unidade: "+un.toString());
                 }
+                Log.d("TAG","array apos for: "+uni.toString());
 
-                ArrayAdapter<UnidadePojo> adapter = new ArrayAdapter<UnidadePojo>(UnidadeActivity.this, android.R.layout.simple_expandable_list_item_1, uni);
+                ArrayAdapter<UnidadePojo> adapter = new ArrayAdapter<UnidadePojo>(UnidadeActivity.this, android.R.layout.simple_list_item_1, uni);
                 lvUni = (ListView) findViewById(R.id.lvUnidades);
                 lvUni.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override

@@ -98,6 +98,32 @@ switch ($opcao) {
 		echo json_encode($return);
 
 		break;
+
+	case 4: //Buscar profissional
+
+		$idpro = $_GET['idpro'];
+
+		$getPro=$pdo->prepare("SELECT * FROM profissional WHERE idprofissional=:idpro");
+		$getPro->bindValue(":idpro", $idpro);
+		$getPro->execute();
+
+		while ($linhaPro=$getPro->fetch(PDO::FETCH_ASSOC)) {
+
+			$idprofissional = $linhaPro['idprofissional'];
+			$nome = $linhaPro['nome'];
+			$funcao = $linhaPro['funcao'];
+
+			$return = array(
+				'idprofissional'	=> $idprofissional,
+				'nome'	=> $nome,
+				'funcao'	=> $funcao
+			);
+
+		}
+
+		echo json_encode($return);
+
+		break;
 	
 	default:
 		# code...

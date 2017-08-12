@@ -6,7 +6,9 @@ package com.example.gustavo.domanda;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AgendamentoPojo {
+import java.io.Serializable;
+
+public class AgendamentoPojo implements Serializable {
 
     @SerializedName("idagendamentoProfissional")
     @Expose
@@ -22,7 +24,7 @@ public class AgendamentoPojo {
     public String hora;
 
     public String toString(){
-        return idagendamentoProfissional+"\n"+idprofissional+"\n"+dia+" - "+hora;
+        return dia+" - "+hora;
     }
 
     public String getIdagendamentoProfissional() {

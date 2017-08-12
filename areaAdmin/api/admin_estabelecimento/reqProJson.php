@@ -7,48 +7,34 @@ include_once("con.php");
 
 $pdo = conectar();
 
-$opcao = 2;
 
-switch ($opcao) {
-
-	case 2: // Buscar Uidade para o app
-
-		$idprofissional = $_GET['idpro']; //Ex: Restaurante
+$idprofissional = $_GET['idpro'];
 
 
-		$getProForApp=$pdo->prepare("SELECT * FROM profissional WHERE idprofissional=:idprofissional");
-		$getProForApp->bindValue(":idprofissional", $idprofissional);
+$getProForApp=$pdo->prepare("SELECT * FROM profissional WHERE idprofissional=:idprofissional");
+$getProForApp->bindValue(":idprofissional", $idprofissional);
+$getProForApp->execute();
 
-		$getProForApp->execute();
+$return = array();
 
-		$return = array();
+while ($linha=$getProForApp->fetch(PDO::FETCH_ASSOC)) {
 
-		while ($linha=$getProForApp->fetch(PDO::FETCH_ASSOC)) {
+	$idprofissional = $linha['idprofissional'];
+	$nome = $linha['nome'];
+	$funcao = $linha['funcao'];
 
-			$idestabelecimento = $linha['idestabelecimento'];
-			$idunidade = $linha['idunidade'];
-			$unidade = $linha['unidade'];
-			$endereco = $linha['endereco'];
-			$numero = $linha['numero'];
+	$return[] = array(
+		'idprofissional'	=> $idprofissional,
+		'nome'	=> $nome,
+		'funcao'	=> $funcao
+	);
 
-			$return = array(
-				'idestabelecimento'	=> $idestabelecimento,
-				'idunidade'	=> $idunidade,
-				'unidade'	=> $unidade,
-				'endereco'	=> $endereco,
-				'numero'	=> $numero
-			);
-
-		}
-
-		echo json_encode($return);
-
-		break;
-	
-	default:
-		# code...
-		break;
 }
+
+
+echo json_encode($return);
+
+
 
 
 

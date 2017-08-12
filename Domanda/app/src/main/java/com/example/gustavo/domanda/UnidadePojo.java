@@ -7,7 +7,9 @@ package com.example.gustavo.domanda;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UnidadePojo {
+import java.io.Serializable;
+
+public class UnidadePojo implements Serializable {
 
     @SerializedName("idestabelecimento")
     @Expose
@@ -26,7 +28,7 @@ public class UnidadePojo {
     public String numero;
 
     public String toString(){
-        return idunidade+"\n"+unidade+"\n"+endereco+", "+numero;
+        return unidade+"\n"+endereco+", "+numero;
     }
 
     public String getIdestabelecimento() {

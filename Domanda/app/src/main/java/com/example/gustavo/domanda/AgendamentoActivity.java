@@ -1,5 +1,6 @@
 package com.example.gustavo.domanda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 
 public class AgendamentoActivity extends AppCompatActivity {
 
+    private ProfissionalPojo p;
     private ListView listAgendamentos;
 
     @Override
@@ -29,24 +32,22 @@ public class AgendamentoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        p = (ProfissionalPojo) getIntent().getSerializableExtra("pro");
+        //Log.d("regys",e.toString());
+        Log.d("ID PRO: ",p.getIdprofissional());
+
+        getAgenda(p.getIdprofissional());
 
         listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
 
+
     }
 
-    public void getAgenda(){
+    public void getAgenda(final String idprofissional){
         final ArrayList<AgendamentoPojo> agenda = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
         GsonRequest<AgendamentoPojo[]> request = new GsonRequest<>("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php?" +
-                "idpro=", AgendamentoPojo[].class, null, new Response.Listener<AgendamentoPojo[]>() {
+                "idpro="+idprofissional, AgendamentoPojo[].class, null, new Response.Listener<AgendamentoPojo[]>() {
             @Override
             public void onResponse(AgendamentoPojo[] response) {
                 for (int i = 0; i < response.length; i++) {
@@ -55,8 +56,9 @@ public class AgendamentoActivity extends AppCompatActivity {
                     ag.hora = response[i].hora;
                     agenda.add(ag);
                 }
+                Log.d("TAG", "array apos for: " + agenda.toString());
 
-                ArrayAdapter<AgendamentoPojo> adapter = new ArrayAdapter<AgendamentoPojo>(AgendamentoActivity.this, android.R.layout.simple_expandable_list_item_1, agenda);
+                ArrayAdapter<AgendamentoPojo> adapter = new ArrayAdapter<AgendamentoPojo>(AgendamentoActivity.this, android.R.layout.simple_list_item_1, agenda);
                 listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
                 listAgendamentos.setAdapter(adapter);
 

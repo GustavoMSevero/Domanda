@@ -37,17 +37,10 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/agenda.html"
     })
 
-    // .when("/mesas", {
-    //     templateUrl: "views/mesas.html"
-    // })
+    .when("/agendaProfissional/:idprofissional", {
+        templateUrl: "views/agendaProfissional.html"
+    })
 
-    // .when("/agendaRestaurantes", {
-    //     templateUrl: "views/agendaRestaurantes.html"
-    // })
-
-    // .when("/agendaCabeleireiros", {
-    //     templateUrl: "views/agendaCabeleireiros.html"
-    // })
 
 });
 

@@ -8,8 +8,8 @@ app.controller("UnidadeCtrl", ['$scope', '$http', '$window', '$location', '$root
 	var buscarEstabeleciento = function(){
 		var idestabelecimento = $rootScope.idestabelecimento;
 		var opcao = 4; //Buscar Estabelecimento;
-		//$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php?idestabelecimento="+idestabelecimento+"&opcao="+opcao).success(function(response){
-		$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php?idestabelecimento="+idestabelecimento+"&opcao="+opcao).success(function(response){
+		$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php?idestabelecimento="+idestabelecimento+"&opcao="+opcao).success(function(response){
+		//$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php?idestabelecimento="+idestabelecimento+"&opcao="+opcao).success(function(response){
 			$scope.estabele = response;
 			$scope.nome = response[0].nome;
 		})

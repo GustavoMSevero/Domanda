@@ -28,6 +28,33 @@
 	margin-top: 10px;
 }
 
+.busca{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.formAgendamento{
+	text-align: center;
+}
+
+.DeH{
+	display: inline-block;
+}
+
+.pro{
+	display: inline-block;
+}
+
+.dia{
+	width: 15%;
+	display: inline-block;
+}
+
+.hora{
+	width: 10%;
+	display: inline-block;
+}
+
 
 .links{
 	margin-bottom: 20px;

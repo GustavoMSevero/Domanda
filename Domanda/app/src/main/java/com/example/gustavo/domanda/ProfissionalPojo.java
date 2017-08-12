@@ -7,7 +7,9 @@ package com.example.gustavo.domanda;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProfissionalPojo {
+import java.io.Serializable;
+
+public class ProfissionalPojo implements Serializable{
 
     @SerializedName("idprofissional")
     @Expose
@@ -20,7 +22,7 @@ public class ProfissionalPojo {
     public String funcao;
 
     public String toString(){
-        return idprofissional+"\n"+nome +" - "+funcao;
+        return nome +" - "+funcao;
     }
 
     public String getIdprofissional() {
