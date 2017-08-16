@@ -41,6 +41,22 @@
         <activity
             android:name=".EstabelecimentoActivity"
             android:label="@string/title_activity_estabelecimento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DiaActivity"
+            android:label="@string/title_activity_dia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HoraActivity"
+            android:label="@string/title_activity_hora"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SobreActivity"
+            android:label="@string/title_activity_sobre"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ConsultarActivity"
+            android:label="@string/title_activity_consultar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

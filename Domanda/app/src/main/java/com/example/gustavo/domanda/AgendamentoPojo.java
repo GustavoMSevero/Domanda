@@ -24,7 +24,7 @@ public class AgendamentoPojo implements Serializable {
     public String hora;
 
     public String toString(){
-        return dia+" - "+hora;
+        return "Dia "+dia+" ás "+hora+" - OCUPADO";
     }
 
     public String getIdagendamentoProfissional() {

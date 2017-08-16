@@ -8,57 +8,64 @@
     tools:context="com.example.gustavo.domanda.AgendamentoActivity"
     tools:showIn="@layout/activity_agendamento">
 
-    <EditText
-        android:id="@+id/edtDia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btnDia"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="dd/mm/aaaa"
-        android:inputType="date"
-        android:textAlignment="center"
+        android:background="@drawable/borda_botao"
+        android:onClick="selecioneHora"
+        android:text="Hora"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDia"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btnHora" />
 
-    <EditText
-        android:id="@+id/edtHora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btnHora"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="14:30"
-        android:inputType="time"
-        android:textAlignment="center"
-        app:layout_constraintHorizontal_bias="0.503"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/borda_botao"
+        android:onClick="selecioneDia"
+        android:text="Dia"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDia"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/tvDia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agendar"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="117dp"
+        android:layout_marginTop="15dp"
+        android:text="Dia"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDia"
+        app:layout_constraintRight_toLeftOf="@+id/tvHora"
         android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.055"
+        android:layout_marginStart="117dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/tvHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="119dp"
+        android:layout_marginTop="15dp"
+        android:text="Hora"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDia"
+        android:layout_marginEnd="119dp" />
 
     <Button
         android:id="@+id/tbnAgendar"
@@ -69,12 +76,13 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="11dp"
         android:background="@drawable/borda_botao"
         android:text="Agendar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtHora" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvHora" />
 
     <ListView
         android:id="@+id/lvAgendamentos"

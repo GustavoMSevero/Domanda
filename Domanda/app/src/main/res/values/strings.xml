@@ -6,4 +6,8 @@
     <string name="title_activity_profisional">ProfisionalActivity</string>
     <string name="title_activity_agendamento">AgendamentoActivity</string>
     <string name="title_activity_estabelecimento">EstabelecimentoActivity</string>
+    <string name="title_activity_dia">DiaActivity</string>
+    <string name="title_activity_hora">HoraActivity</string>
+    <string name="title_activity_sobre">SobreActivity</string>
+    <string name="title_activity_consultar">ConsultarActivity</string>
 </resources>

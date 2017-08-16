@@ -1,7 +1,6 @@
 package com.example.gustavo.domanda;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -37,7 +36,7 @@ public class AgendamentoAdapter extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.linha_agendamento, null);
         }
 
-        TextView dia = (TextView) convertView.findViewById(R.id.tvDia);
+        TextView dia = (TextView) convertView.findViewById(R.id.tvAgenda);
         TextView hora = (TextView) convertView.findViewById(R.id.tvHora);
 
         dia.setText(agendamento.getDia());

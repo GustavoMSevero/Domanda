@@ -50,17 +50,19 @@ public class AgendamentoActivity extends AppCompatActivity {
                 "idpro="+idprofissional, AgendamentoPojo[].class, null, new Response.Listener<AgendamentoPojo[]>() {
             @Override
             public void onResponse(AgendamentoPojo[] response) {
+                //Log.d("TAG", "Esse é o response: " + response);
                 for (int i = 0; i < response.length; i++) {
                     AgendamentoPojo ag = new AgendamentoPojo();
                     ag.dia = response[i].dia;
                     ag.hora = response[i].hora;
                     agenda.add(ag);
                 }
-                Log.d("TAG", "array apos for: " + agenda.toString());
+                //Log.d("TAG", "array apos for: " + agenda.toString());
 
                 ArrayAdapter<AgendamentoPojo> adapter = new ArrayAdapter<AgendamentoPojo>(AgendamentoActivity.this, android.R.layout.simple_list_item_1, agenda);
                 listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
                 listAgendamentos.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener() {
@@ -72,4 +74,13 @@ public class AgendamentoActivity extends AppCompatActivity {
         queue.add(request);
     }
 
+    public void selecioneHora(View view) {
+        Intent intentHora = new Intent(AgendamentoActivity.this, HoraActivity.class);
+        startActivity(intentHora);
+    }
+
+    public void selecioneDia(View view) {
+        Intent intentDia = new Intent(AgendamentoActivity.this, DiaActivity.class);
+        startActivity(intentDia);
+    }
 }

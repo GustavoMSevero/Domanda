@@ -28,4 +28,14 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(buscarIntent);
     }
 
+
+    public void sobre(View view) {
+        Intent intentSobre = new Intent(MenuActivity.this, SobreActivity.class);
+        startActivity(intentSobre);
+    }
+
+    public void consultarAgenda(View view) {
+        Intent intentConsultarAgenda = new Intent(MenuActivity.this, ConsultarActivity.class);
+        startActivity(intentConsultarAgenda);
+    }
 }
