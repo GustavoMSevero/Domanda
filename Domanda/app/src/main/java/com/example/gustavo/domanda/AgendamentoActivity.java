@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +26,11 @@ public class AgendamentoActivity extends AppCompatActivity {
 
     private ProfissionalPojo p;
     private ListView listAgendamentos;
+    private Spinner spinnerHorario;
+    private String dadoDia;
+    private String dadoHora;
+
+    //private horario adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +47,70 @@ public class AgendamentoActivity extends AppCompatActivity {
 
         listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
 
+        spinnerHorario = (Spinner) findViewById(R.id.spHorario);
+
+        // Colocado os valores no spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spHorario, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerHorario.setAdapter(adapter);
+
+        spinnerHorario.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if(i == 0){
+                    Toast.makeText(getBaseContext(), "8:00 - 9:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "8:00 - 9:00";
+                }else if (i == 1){
+                    Toast.makeText(getBaseContext(), "9:00 - 10:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "9:00 - 10:00";
+                }else if (i == 2){
+                    Toast.makeText(getBaseContext(), "10:00 - 11:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "10:00 - 11:00";
+                }else if (i == 3){
+                    Toast.makeText(getBaseContext(), "11:00 - 12:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "11:00 - 12:00";
+                }else if (i == 4){
+                    Toast.makeText(getBaseContext(), "12:00 - 13:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "12:00 - 13:00";
+                }else if (i == 5){
+                    Toast.makeText(getBaseContext(), "13:00 - 14:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "13:00 - 14:00";
+                }else if (i == 6){
+                    Toast.makeText(getBaseContext(), "14:00 - 15:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "14:00 - 15:00";
+                }else if (i == 7){
+                    Toast.makeText(getBaseContext(), "15:00 - 16:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "15:00 - 16:00";
+                }else if (i == 8){
+                    Toast.makeText(getBaseContext(), "16:00 - 17:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "16:00 - 17:00";
+                }else if (i == 9){
+                    Toast.makeText(getBaseContext(), "17:00 - 18:00", Toast.LENGTH_LONG).show();
+                    String dadoHora = "17:00 - 18:00";
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
     }
 
+    public void setAgendar(){
+        //String dadoDia =
+        String dadoHora = spinnerHorario.getSelectedItem().toString();
+    }
+
+
     public void getAgenda(final String idprofissional){
+
         final ArrayList<AgendamentoPojo> agenda = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
         GsonRequest<AgendamentoPojo[]> request = new GsonRequest<>("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php?" +
@@ -74,13 +141,4 @@ public class AgendamentoActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    public void selecioneHora(View view) {
-        Intent intentHora = new Intent(AgendamentoActivity.this, HoraActivity.class);
-        startActivity(intentHora);
-    }
-
-    public void selecioneDia(View view) {
-        Intent intentDia = new Intent(AgendamentoActivity.this, DiaActivity.class);
-        startActivity(intentDia);
-    }
 }

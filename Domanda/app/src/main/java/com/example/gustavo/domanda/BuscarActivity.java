@@ -2,8 +2,6 @@ package com.example.gustavo.domanda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,12 +21,17 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 
+import static com.example.gustavo.domanda.R.id.alertTitle;
+import static com.example.gustavo.domanda.R.id.parent;
+
 public class BuscarActivity extends AppCompatActivity {
 
-    private EditText campoBusca;
+    //private EditText campoBusca;
     private Button btnBuscar;
     private ListView lvEstabelecimentos;
     private RequestQueue mVolleyQueue;
+    private Spinner spinnerEstabelecimento;
+    private String dadoBusca;
 
     private EstabelecimentoAdapter adapter;
     private ArrayList<EstabelecimentoPojo> estabelecimentos;
@@ -38,7 +43,8 @@ public class BuscarActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        campoBusca = (EditText) findViewById(R.id.edtCampoBusca);
+        spinnerEstabelecimento = (Spinner) findViewById(R.id.spBusca);
+        //campoBusca = (EditText) findViewById(R.id.edtCampoBusca);
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         lvEstabelecimentos = (ListView) findViewById(R.id.lvEstabelecimentos);
 
@@ -64,12 +70,47 @@ public class BuscarActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+        // Colocado os valores no spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spBusca, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstabelecimento.setAdapter(adapter);
+
+        spinnerEstabelecimento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if(i == 0){
+                    Toast.makeText(getBaseContext(), "Cabeleireiro", Toast.LENGTH_LONG).show();
+                    String dadoBusca = "Cabeleireiro";
+                }else if (i == 1){
+                    Toast.makeText(getBaseContext(), "Restaurante", Toast.LENGTH_LONG).show();
+                    String dadoBusca = "Restaurante";
+                }else if (i == 2){
+                    Toast.makeText(getBaseContext(), "Casa de festa", Toast.LENGTH_LONG).show();
+                    String dadoBusca = "Casa de festa";
+                }else if (i == 3){
+                    Toast.makeText(getBaseContext(), "Quadra esportiva", Toast.LENGTH_LONG).show();
+                    String dadoBusca = "Quadra esportiva";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
+
+
     public void procurar(View view) {
-        //Toast.makeText(this,"Clicou", Toast.LENGTH_SHORT).show();
-        String dadoBusca = campoBusca.getText().toString();
-        //Toast.makeText(this,"entrou no procurar: "+dadoBusca, Toast.LENGTH_SHORT).show();
+
+        String dadoBusca = spinnerEstabelecimento.getSelectedItem().toString();
+        //Toast.makeText(this,"Valor selecionado é: "+dadoBusca, Toast.LENGTH_SHORT).show();
 
         final ArrayList<EstabelecimentoPojo> cia = new ArrayList<>();
         RequestQueue rq = Volley.newRequestQueue(this);
@@ -102,5 +143,6 @@ public class BuscarActivity extends AppCompatActivity {
         rq.add(request);
 
     }
+
 
 }
