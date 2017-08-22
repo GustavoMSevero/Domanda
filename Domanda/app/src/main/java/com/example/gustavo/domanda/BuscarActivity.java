@@ -83,16 +83,16 @@ public class BuscarActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 if(i == 0){
-                    Toast.makeText(getBaseContext(), "Cabeleireiro", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), "Cabeleireiro", Toast.LENGTH_LONG).show();
                     String dadoBusca = "Cabeleireiro";
                 }else if (i == 1){
-                    Toast.makeText(getBaseContext(), "Restaurante", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), "Restaurante", Toast.LENGTH_LONG).show();
                     String dadoBusca = "Restaurante";
                 }else if (i == 2){
-                    Toast.makeText(getBaseContext(), "Casa de festa", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), "Casa de festa", Toast.LENGTH_LONG).show();
                     String dadoBusca = "Casa de festa";
                 }else if (i == 3){
-                    Toast.makeText(getBaseContext(), "Quadra esportiva", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), "Quadra esportiva", Toast.LENGTH_LONG).show();
                     String dadoBusca = "Quadra esportiva";
                 }
             }
