@@ -31,5 +31,6 @@
         <item>17:00 - 18:00</item>
 
     </string-array>
+    <string name="title_activity_cadastro">CadastroActivity</string>
 
 </resources>

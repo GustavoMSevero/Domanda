@@ -31,7 +31,7 @@ public class AgendamentoActivity extends AppCompatActivity {
     private ProfissionalPojo p;
     private ListView listAgendamentos;
     private Spinner spinnerHorario;
-    private String dadoDia;
+    //private String dadoDia;
     private String dadoHora;
     private StringCharacterIterator editText;
     private Calendar myCalendar;
@@ -59,8 +59,8 @@ public class AgendamentoActivity extends AppCompatActivity {
 
         spinnerHorario = (Spinner) findViewById(R.id.spHorario);
 
-        TextView tvDia = ((TextView) findViewById(R.id.tvDia));
-        TextView tvHora = ((TextView) findViewById(R.id.tvHora));
+//        TextView tvDia = ((TextView) findViewById(R.id.tvDia));
+//        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
 
         // Colocado os valores no spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -105,13 +105,17 @@ public class AgendamentoActivity extends AppCompatActivity {
                     String dadoHora = "17:00 - 18:00";
                 }
 
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
+
+
 
         //Cria o Calendário
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -148,7 +152,9 @@ public class AgendamentoActivity extends AppCompatActivity {
 
 
 
+    //Final do onCreate
     }
+
 
     private void updateLabel(Calendar myCalendar) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -157,10 +163,14 @@ public class AgendamentoActivity extends AppCompatActivity {
     }
 
     public void agendar(View view) {
-        String dadoDia = diaAgenda;
-        String dadoHora = spinnerHorario.getSelectedItem().toString();
-        Log.d("TAG", "DATA " + dadoDia + " HORA " +dadoHora);
-        
+//        TextView tvDia = ((TextView) findViewById(R.id.tvDia));
+//        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
+        dadoHora = spinnerHorario.getSelectedItem().toString();
+
+        String dia = diaAgenda;
+        String hora = dadoHora;
+        Log.d("TAG", "DATA " + diaAgenda + " HORA " +dadoHora);
+
     }
 
 

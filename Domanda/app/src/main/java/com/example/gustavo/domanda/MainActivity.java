@@ -26,17 +26,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-        email = (TextView)findViewById(R.id.edtEmail);
-        senha = (TextView)findViewById(R.id.edtSenha);
+//        email = (TextView)findViewById(R.id.edtEmail);
+//        senha = (TextView)findViewById(R.id.edtSenha);
         logar = (Button)findViewById(R.id.btnEntrar);
 
     }
@@ -64,11 +55,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
-        Toast.makeText(this, "Entrar", Toast.LENGTH_SHORT).show();
+        email = (TextView)findViewById(R.id.edtEmail);
+        senha = (TextView)findViewById(R.id.edtSenha);
+
+        String dadoEmail = email.getText().toString();
+        String dadoSenha = senha.getText().toString();
+        //String mens = "Email "+dadoEmail+ " e Senha "+dadoSenha ;
+        //Toast.makeText(this, mens, Toast.LENGTH_SHORT).show();
+
     }
 
     public void cadastrar(View view) {
-        Toast.makeText(this, "Cadastrar", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Cadastrar", Toast.LENGTH_SHORT).show();
+        Intent intentCadastro = new Intent(MainActivity.this, CadastroActivity.class);
+        startActivity(intentCadastro);
     }
 
     public void experimentar(View view) {

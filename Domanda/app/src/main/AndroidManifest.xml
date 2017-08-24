@@ -49,6 +49,10 @@
         <activity
             android:name=".ConsultarActivity"
             android:label="@string/title_activity_consultar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CadastroActivity"
+            android:label="@string/title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

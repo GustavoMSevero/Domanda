@@ -44,8 +44,8 @@ app.controller("UnidadeCtrl", ['$scope', '$http', '$window', '$location', '$root
 		var opcao = 1; //Cadastro de unidade
 		unidade.idestabelecimento = $rootScope.idestabelecimento;
 		unidade.opcao = opcao;
-		//$http.post("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/unidade.php", unidade).success(function(data){
-		$http.post("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/unidade.php", unidade).success(function(data){
+		$http.post("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/unidade.php", unidade).success(function(data){
+		//$http.post("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/unidade.php", unidade).success(function(data){
 			$scope.unidade = {};
 			$scope.msgSuccess = data.msgRegisterSuccess;
 			exibeUnidades();
@@ -56,8 +56,8 @@ app.controller("UnidadeCtrl", ['$scope', '$http', '$window', '$location', '$root
 		var idestabel = localStorage.getItem('idestabelecimento');
 		var opcao = 2 // Buscar Unidades
 		//console.log(idestabel)
-		//$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/unidade.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
-		$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/unidade.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
+		$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/unidade.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
+		//$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/unidade.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
 			//console.log(response)
 			$scope.unidades = response;
 		})

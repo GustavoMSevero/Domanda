@@ -73,12 +73,15 @@ switch ($opcao) {
 
 	case 3: //Buscar profissionais
 
-		$getPro=$pdo->prepare("SELECT * FROM profissional INNER JOIN unidade ON profissional.idunidade = unidade.idunidade");
+		$idestabel = $_GET['idestabel'];
+
+		$getPro=$pdo->prepare("SELECT * FROM unidade INNER JOIN profissional 
+							  ON profissional.idunidade = unidade.idunidade WHERE idestabelecimento=:idestabel");
+		$getPro->bindValue(":idestabel", $idestabel);
 		$getPro->execute();
 
 		while ($linhaPro=$getPro->fetch(PDO::FETCH_ASSOC)) {
 
-			$idunidade = $linhaPro['idunidade'];
 			$unidade = $linhaPro['unidade'];
 			$idprofissional = $linhaPro['idprofissional'];
 			$idunidade = $linhaPro['idunidade'];

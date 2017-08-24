@@ -36,8 +36,8 @@ app.controller("InicialCtrl", ['$scope', '$http', '$window', '$location', '$root
 
 		//console.log(cia)
 		
-		//$http.post("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php", cia).success(function(data){
-		$http.post("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php", cia).success(function(data){
+		$http.post("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php", cia).success(function(data){
+		//$http.post("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php", cia).success(function(data){
 			$scope.cia = {};
 			$scope.msgSucesso = data.msgRegisterSuccess;
 			getAddress();
@@ -47,8 +47,8 @@ app.controller("InicialCtrl", ['$scope', '$http', '$window', '$location', '$root
 	var getAddress = function(){
 		idestabel = $scope.idestabelecimento;
 		var opcao = 5; //Buscar Endereço de cadastro
-		//$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
-		$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
+		$http.get("http://localhost:8888/sistemas/Android/areaAdmin/api/admin_estabelecimento/estabelecimento.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
+		//$http.get("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/estabelecimento.php?opcao="+opcao+"&idestabel="+idestabel).success(function(response){
 			$scope.enderecos = response;
 		})
 	}

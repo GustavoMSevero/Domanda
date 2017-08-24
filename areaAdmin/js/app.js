@@ -41,6 +41,10 @@ app.config(function($routeProvider, $locationProvider){
         templateUrl: "views/agendaProfissional.html"
     })
 
+    .when("/clientes/", {
+        templateUrl: "views/clientes.html"
+    })
+
 
 });
 
