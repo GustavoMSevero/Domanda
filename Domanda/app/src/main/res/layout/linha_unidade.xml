@@ -33,11 +33,9 @@
         android:id="@+id/tvNumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="TextView"
-        app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintLeft_toRightOf="@+id/tvEndereco"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="27dp" />
+        app:layout_constraintLeft_toRightOf="@+id/tvEndereco"
+        android:layout_marginLeft="8dp" />
 </android.support.constraint.ConstraintLayout>

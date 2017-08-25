@@ -7,9 +7,9 @@
         ></corners>
 
     <solid
-        android:color="@color/green500"></solid>
+        android:color="@color/yellow600"></solid>
 
-    <stroke
-        android:width="2dp"
-        android:color="@color/black"></stroke>
+    <!--<stroke-->
+        <!--android:width="2dp"-->
+        <!--android:color="@color/black"></stroke>-->
 </shape>

@@ -21,38 +21,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MenuActivity"
-            android:label="@string/title_activity_menu"
+            android:label="Menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BuscarActivity"
-            android:label="@string/title_activity_buscar"
+            android:label="Buscar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UnidadeActivity" />
+        <activity
+            android:name=".UnidadeActivity"
+            android:label="Unidades"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProfissionalActivity"
-            android:label="@string/title_activity_profisional"
+            android:label="Profissional"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AgendamentoActivity"
-            android:label="@string/title_activity_agendamento"
+            android:label="Agendamento"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EstabelecimentoActivity"
-            android:label="@string/title_activity_estabelecimento"
+            android:label="Estabelecimento"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SobreActivity"
-            android:label="@string/title_activity_sobre"
+            android:label="Sobre"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ConsultarActivity"
-            android:label="@string/title_activity_consultar"
+            android:label="Consultar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CadastroActivity"
-            android:label="@string/title_activity_cadastro"
+            android:label="Cadastro"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

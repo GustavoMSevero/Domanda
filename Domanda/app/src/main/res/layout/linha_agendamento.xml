@@ -11,21 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_marginLeft="107dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="235dp" />
+        tools:layout_editor_absoluteY="227dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/tvHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintLeft_toRightOf="@+id/tvAgenda"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="235dp" />
+        tools:layout_editor_absoluteY="227dp" />
 </android.support.constraint.ConstraintLayout>

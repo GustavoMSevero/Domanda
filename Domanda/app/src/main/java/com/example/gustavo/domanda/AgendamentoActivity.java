@@ -59,9 +59,6 @@ public class AgendamentoActivity extends AppCompatActivity {
 
         spinnerHorario = (Spinner) findViewById(R.id.spHorario);
 
-//        TextView tvDia = ((TextView) findViewById(R.id.tvDia));
-//        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
-
         // Colocado os valores no spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.spHorario, android.R.layout.simple_spinner_item);
@@ -105,16 +102,20 @@ public class AgendamentoActivity extends AppCompatActivity {
                     String dadoHora = "17:00 - 18:00";
                 }
 
+                dadoHora = spinnerHorario.getSelectedItem().toString();
+                exibeHora();
 
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
 
-        });
 
+
+        });
 
 
         //Cria o Calendário
@@ -150,26 +151,37 @@ public class AgendamentoActivity extends AppCompatActivity {
 
 
 
-
-
     //Final do onCreate
+    }
+
+    public void exibeDia(){
+        final TextView tvDia = ((TextView) findViewById(R.id.tvDia));
+        tvDia.setText(diaAgenda);
+    }
+
+    public void exibeHora(){
+        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
+        tvHora.setText(dadoHora);
     }
 
 
     private void updateLabel(Calendar myCalendar) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         diaAgenda = sdf.format(myCalendar.getTime());
+        //dadoHora = spinnerHorario.getSelectedItem().toString();
+        exibeDia();
         //Log.d("TAG", "DATA " + diaAgenda);
     }
 
     public void agendar(View view) {
-//        TextView tvDia = ((TextView) findViewById(R.id.tvDia));
+//        final TextView tvDia = ((TextView) findViewById(R.id.tvDia));
 //        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
-        dadoHora = spinnerHorario.getSelectedItem().toString();
+        //dadoHora = spinnerHorario.getSelectedItem().toString();
 
-        String dia = diaAgenda;
-        String hora = dadoHora;
-        Log.d("TAG", "DATA " + diaAgenda + " HORA " +dadoHora);
+//        tvDia.setText(diaAgenda);
+//        tvHora.setText(dadoHora);
+
+        //Log.d("TAG", "DATA " + diaAgenda + " HORA " +dadoHora);
 
     }
 
