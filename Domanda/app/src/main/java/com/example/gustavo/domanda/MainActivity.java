@@ -2,10 +2,9 @@ package com.example.gustavo.domanda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,11 +12,26 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.example.gustavo.domanda.R.id.edtSenha;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView email;
     private TextView senha;
     private Button logar;
+    private RequestQueue mVolleyRequest;
+    private TextView msgErro;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        email = (TextView)findViewById(R.id.edtEmail);
-//        senha = (TextView)findViewById(R.id.edtSenha);
         logar = (Button)findViewById(R.id.btnEntrar);
+
+        mVolleyRequest = Volley.newRequestQueue(this);
 
     }
 
@@ -41,9 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -54,14 +66,75 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void entrar(View view) {
-        email = (TextView)findViewById(R.id.edtEmail);
-        senha = (TextView)findViewById(R.id.edtSenha);
+    public void entrar(View view) throws JSONException {
 
-        String dadoEmail = email.getText().toString();
-        String dadoSenha = senha.getText().toString();
-        //String mens = "Email "+dadoEmail+ " e Senha "+dadoSenha ;
-        //Toast.makeText(this, mens, Toast.LENGTH_SHORT).show();
+        email = (TextView)findViewById(R.id.edtEmail);
+        senha = (TextView)findViewById(edtSenha);
+
+        JSONObject dadosJsonObject = new JSONObject();
+        dadosJsonObject.put("email", email.getText().toString());
+        dadosJsonObject.put("senha", senha.getText().toString());
+        dadosJsonObject.toString();
+
+        //Toast.makeText(this, dadosJsonObject.toString(), Toast.LENGTH_SHORT).show();
+        //Log.d("Dados", dadosJsonObject.toString());
+
+        final JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST,
+                "http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/pegaUsuario.php", dadosJsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        int idusuario = 0;
+                        String nomeUsuario = null;
+                        String sobrenomeUsuario = null;
+
+                        try {
+                            String status = response.getString("status");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if(status == null) {
+                            try {
+                                msgErro = (TextView) findViewById(R.id.tvErro);
+                                msgErro.setText(response.getString("msg"));
+                                return;
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+
+                        try {
+                            idusuario = response.getInt("idusuario");
+                            nomeUsuario = response.getString("nome");
+                            sobrenomeUsuario = response.getString("sobrenome");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Intent intentEntrar = new Intent(MainActivity.this, MenuActivity.class);
+                        intentEntrar.putExtra("idusuario", idusuario);
+                        intentEntrar.putExtra("nome", nomeUsuario);
+                        intentEntrar.putExtra("sobrenome", sobrenomeUsuario);
+
+                        startActivity(intentEntrar);
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Toast.makeText(MainActivity.this, "Tente novamente"+error, Toast.LENGTH_SHORT).show();
+                //Log.d("TAG", "ERRO!!: " + error);
+
+            }
+        }
+        );
+
+        mVolleyRequest.add(json);
 
     }
 

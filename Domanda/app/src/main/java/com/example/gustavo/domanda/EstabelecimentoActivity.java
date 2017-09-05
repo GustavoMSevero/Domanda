@@ -1,5 +1,6 @@
 package com.example.gustavo.domanda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,6 +24,10 @@ public class EstabelecimentoActivity extends AppCompatActivity {
 
     private ListView listEstabelecimentos;
 
+    private int idusuario;
+    private String nome;
+    private String sobrenome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,29 @@ public class EstabelecimentoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extra = getIntent().getExtras();
+
+        if(extra != null){
+            idusuario = extra.getInt("idusuario");
+            nome = extra.getString("nome");
+            sobrenome = extra.getString("sobrenome");
+        }
+        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+
         listEstabelecimentos = ((ListView)findViewById(R.id.lvEstabelecimentos));
+
+        listEstabelecimentos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                EstabelecimentoPojo u = (EstabelecimentoPojo) listEstabelecimentos.getItemAtPosition(position);
+                Intent it = new Intent(EstabelecimentoActivity.this, UnidadeActivity.class);
+                it.putExtra("unid", u);
+                it.putExtra("idusuario", idusuario);
+                it.putExtra("nome", nome);
+                it.putExtra("sobrenome", sobrenome);
+                startActivity(it);
+            }
+        });
 
     }
 

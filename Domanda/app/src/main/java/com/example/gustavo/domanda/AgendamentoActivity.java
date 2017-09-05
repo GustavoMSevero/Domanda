@@ -31,11 +31,15 @@ public class AgendamentoActivity extends AppCompatActivity {
     private ProfissionalPojo p;
     private ListView listAgendamentos;
     private Spinner spinnerHorario;
-    //private String dadoDia;
+
     private String dadoHora;
     private StringCharacterIterator editText;
     private Calendar myCalendar;
     private String diaAgenda;
+
+    private int idusuario;
+    private String nome;
+    private String sobrenome;
 
     //private horario adapter;
 
@@ -46,12 +50,21 @@ public class AgendamentoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extra = getIntent().getExtras();
+
+        if(extra != null){
+            idusuario = extra.getInt("idusuario");
+            nome = extra.getString("nome");
+            sobrenome = extra.getString("sobrenome");
+        }
+        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+
         final Calendar myCalendar = Calendar.getInstance();
 
         p = (ProfissionalPojo) getIntent().getSerializableExtra("pro");
         //Log.d("ID PRO: ",p.getIdprofissional());
 
-        getAgenda(p.getIdprofissional());
+        //getAgenda(p.getIdprofissional());
 
         listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
 

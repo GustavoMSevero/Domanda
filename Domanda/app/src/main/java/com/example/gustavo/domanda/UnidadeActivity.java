@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,14 +26,27 @@ public class UnidadeActivity extends AppCompatActivity {
     private EstabelecimentoPojo e;
     private ListView lvUni;
 
+    private int idusuario;
+    private String nome;
+    private String sobrenome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unidade);
 
+        Bundle extra = getIntent().getExtras();
+
+        if(extra != null){
+            idusuario = extra.getInt("idusuario");
+            nome = extra.getString("nome");
+            sobrenome = extra.getString("sobrenome");
+        }
+        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+
         e = (EstabelecimentoPojo) getIntent().getSerializableExtra("estab");
         //Log.d("regys",e.toString());
-        Log.d("ID ESTAB: ",e.getIdestabelecimento());
+        //Log.d("ID ESTAB: ",e.getIdestabelecimento());
 
         getUnidades(e.getIdestabelecimento());
 
@@ -44,6 +58,9 @@ public class UnidadeActivity extends AppCompatActivity {
                 UnidadePojo u = (UnidadePojo) lvUni.getItemAtPosition(position);
                 Intent it = new Intent(UnidadeActivity.this, ProfissionalActivity.class);
                 it.putExtra("unid", u);
+                it.putExtra("idusuario", idusuario);
+                it.putExtra("nome", nome);
+                it.putExtra("sobrenome", sobrenome);
                 startActivity(it);
             }
         });
@@ -81,38 +98,5 @@ public class UnidadeActivity extends AppCompatActivity {
         });
         queue.add(request);
 
-//        String url = "http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqUnitJson.php?";
-//        StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<UnidadePojo>() {
-//
-//            @Override
-//            public void onResponse(UnidadePojo[] response) {
-//                //Log.d("Response EU ACHO: ", response);
-//                for (int i = 0; i < response.length; i++){
-//                    UnidadePojo un = new UnidadePojo();
-//                    un.unidade = response[i].unidade;
-//                    un.endereco = response[i].endereco;
-//                    un.numero = response[i].numero;
-//                    uni.add(un);
-//                }
-//                ArrayAdapter<UnidadePojo> adapter = new ArrayAdapter<UnidadePojo>(UnidadeActivity.this, android.R.layout.simple_expandable_list_item_1, uni);
-//                lvUni = (ListView) findViewById(R.id.lvUnidades);
-//                lvUni.setAdapter(adapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("Error.Response", String.valueOf(error));
-//            }
-//        }
-//        ){
-//            protected Map<String, String> getParams(){
-//                Map<String, String>  params = new HashMap<String, String>();
-//
-//                params.put("idestabelecimento", idestabelecimento);
-//
-//                return params;
-//            }
-//        };
-//        queue.add(postRequest);
     }
 }

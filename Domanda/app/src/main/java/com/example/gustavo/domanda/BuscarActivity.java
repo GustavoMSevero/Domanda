@@ -33,6 +33,10 @@ public class BuscarActivity extends AppCompatActivity {
     private Spinner spinnerEstabelecimento;
     private String dadoBusca;
 
+    private int idusuario;
+    private String nome;
+    private String sobrenome;
+
     private EstabelecimentoAdapter adapter;
     private ArrayList<EstabelecimentoPojo> estabelecimentos;
 
@@ -42,6 +46,16 @@ public class BuscarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_buscar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle extra = getIntent().getExtras();
+
+        if(extra != null){
+            idusuario = extra.getInt("idusuario");
+            nome = extra.getString("nome");
+            sobrenome = extra.getString("sobrenome");
+        }
+        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+
 
         spinnerEstabelecimento = (Spinner) findViewById(R.id.spBusca);
         //campoBusca = (EditText) findViewById(R.id.edtCampoBusca);
@@ -67,6 +81,9 @@ public class BuscarActivity extends AppCompatActivity {
                 EstabelecimentoPojo e = (EstabelecimentoPojo) lvEstabelecimentos.getItemAtPosition(position);
                 Intent it = new Intent(BuscarActivity.this, UnidadeActivity.class);
                 it.putExtra("estab", e);
+                it.putExtra("idusuario", idusuario);
+                it.putExtra("nome", nome);
+                it.putExtra("sobrenome", sobrenome);
                 startActivity(it);
             }
         });

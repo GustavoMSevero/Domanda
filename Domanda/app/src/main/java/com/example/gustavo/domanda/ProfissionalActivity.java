@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,12 +23,25 @@ public class ProfissionalActivity extends AppCompatActivity {
     private UnidadePojo u;
     private ListView listPro;
 
+    private int idusuario;
+    private String nome;
+    private String sobrenome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profissional);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle extra = getIntent().getExtras();
+
+        if(extra != null){
+            idusuario = extra.getInt("idusuario");
+            nome = extra.getString("nome");
+            sobrenome = extra.getString("sobrenome");
+        }
+        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         listPro =  ((ListView)findViewById(R.id.lvProfissional));
 
@@ -43,6 +57,9 @@ public class ProfissionalActivity extends AppCompatActivity {
                 ProfissionalPojo p = (ProfissionalPojo) listPro.getItemAtPosition(i);
                 Intent it = new Intent(ProfissionalActivity.this, AgendamentoActivity.class);
                 it.putExtra("pro", p);
+                it.putExtra("idusuario", idusuario);
+                it.putExtra("nome", nome);
+                it.putExtra("sobrenome", sobrenome);
                 startActivity(it);
 
             }
