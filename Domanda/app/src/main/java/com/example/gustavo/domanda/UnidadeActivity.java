@@ -42,7 +42,7 @@ public class UnidadeActivity extends AppCompatActivity {
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
         }
-        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         e = (EstabelecimentoPojo) getIntent().getSerializableExtra("estab");
         //Log.d("regys",e.toString());
@@ -81,9 +81,9 @@ public class UnidadeActivity extends AppCompatActivity {
                     un.endereco = response[i].endereco;
                     un.numero = response[i].numero;
                     uni.add(un);
-                    Log.d("TAG","dentro for unidade: "+un.toString());
+                    //Log.d("TAG","dentro for unidade: "+un.toString());
                 }
-                Log.d("TAG","array apos for: "+uni.toString());
+                //Log.d("TAG","array apos for: "+uni.toString());
 
                 ArrayAdapter<UnidadePojo> adapter = new ArrayAdapter<UnidadePojo>(UnidadeActivity.this, android.R.layout.simple_list_item_1, uni);
                 lvUni = (ListView) findViewById(R.id.lvUnidades);

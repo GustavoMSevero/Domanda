@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MenuActivity"
             android:label="Menu"
@@ -57,6 +56,14 @@
         <activity
             android:name=".CadastroActivity"
             android:label="Cadastro"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AtualizarDadosLoginActivity"
+            android:label="Atualizar Dados"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EnderecoActivity"
+            android:label="Endereco"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

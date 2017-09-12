@@ -19,6 +19,7 @@
     </string-array>
 
     <string-array name="spHorario">
+        <item>Selecione</item>
         <item>8:00 - 9:00</item>
         <item>9:00 - 10:00</item>
         <item>10:00 - 11:00</item>
@@ -32,5 +33,7 @@
 
     </string-array>
     <string name="title_activity_cadastro">CadastroActivity</string>
+    <string name="title_activity_atualizar_dados">AtualizarDadosActivity</string>
+    <string name="title_activity_endereco">EnderecoActivity</string>
 
 </resources>

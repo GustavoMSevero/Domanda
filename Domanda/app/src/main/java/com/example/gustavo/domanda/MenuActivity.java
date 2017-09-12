@@ -2,14 +2,10 @@ package com.example.gustavo.domanda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -32,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
         }
-        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         buscar = ((Button)findViewById(R.id.btnBuscar));
     }
@@ -54,6 +50,23 @@ public class MenuActivity extends AppCompatActivity {
 
     public void consultarAgenda(View view) {
         Intent intentConsultarAgenda = new Intent(MenuActivity.this, ConsultarActivity.class);
+        intentConsultarAgenda.putExtra("idusuario", idusuario);
+
         startActivity(intentConsultarAgenda);
+    }
+
+    public void atualizarDados(View view) {
+        Intent intentAtualzarDados = new Intent(MenuActivity.this, AtualizarDadosLoginActivity.class);
+        intentAtualzarDados.putExtra("idusuario", idusuario);
+        intentAtualzarDados.putExtra("nome", nome);
+        intentAtualzarDados.putExtra("sobrenome", sobrenome);
+
+        startActivity(intentAtualzarDados);
+    }
+
+    public void endereco(View view) {
+        Intent intentEndereco = new Intent(MenuActivity.this, EnderecoActivity.class);
+        intentEndereco.putExtra("idusuario", idusuario);
+        startActivity(intentEndereco);
     }
 }

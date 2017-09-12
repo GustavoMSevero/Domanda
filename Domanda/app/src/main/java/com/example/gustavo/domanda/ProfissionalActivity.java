@@ -41,13 +41,13 @@ public class ProfissionalActivity extends AppCompatActivity {
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
         }
-        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         listPro =  ((ListView)findViewById(R.id.lvProfissional));
 
         u = (UnidadePojo) getIntent().getSerializableExtra("unid");
         //Log.d("regys",e.toString());
-        Log.d("ID UNID: ",u.getIdunidade());
+        //Log.d("ID UNID: ",u.getIdunidade());
 
         getProfs(u.getIdunidade());
 

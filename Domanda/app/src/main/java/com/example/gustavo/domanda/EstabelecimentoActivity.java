@@ -42,7 +42,7 @@ public class EstabelecimentoActivity extends AppCompatActivity {
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
         }
-        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         listEstabelecimentos = ((ListView)findViewById(R.id.lvEstabelecimentos));
 

@@ -26,8 +26,11 @@ public class EstabelecimentoPojo implements Serializable
     public String uf;
     private final static long serialVersionUID = -5159666548259993357L;
 
+//    public String toString(){
+//        return nome+"\n"+end+", "+num+"\n"+cid+"/"+uf;
+//    }
     public String toString(){
-        return nome+"\n"+end+", "+num+"\n"+cid+"/"+uf;
+        return nome+"\n"+cid+"/"+uf;
     }
 
     public String getIdestabelecimento() {

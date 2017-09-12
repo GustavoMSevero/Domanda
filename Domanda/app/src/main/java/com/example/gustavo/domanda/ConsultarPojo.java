@@ -1,26 +1,28 @@
 package com.example.gustavo.domanda;
 
 /**
- * Created by Gustavo on 11/08/17.
+ * Created by Gustavo on 06/09/17.
  */
+
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
 
-public class AgendamentoPojo implements Serializable {
+public class ConsultarPojo implements Serializable {
 
     @SerializedName("idagendamentoProfissional")
     @Expose
     public String idagendamentoProfissional;
-    @SerializedName("idprofissional")
+    @SerializedName("idcliente")
     @Expose
-    public String idprofissional;
+    public String idcliente;
     @SerializedName("dia")
     @Expose
     public String dia;
     @SerializedName("hora")
     @Expose
     public String hora;
+    private final static long serialVersionUID = 5989947660239077050L;
 
     public String toString(){
         return "Dia "+dia+" as "+hora;
@@ -34,12 +36,12 @@ public class AgendamentoPojo implements Serializable {
         this.idagendamentoProfissional = idagendamentoProfissional;
     }
 
-    public String getIdprofissional() {
-        return idprofissional;
+    public String getIdcliente() {
+        return idcliente;
     }
 
-    public void setIdprofissional(String idprofissional) {
-        this.idprofissional = idprofissional;
+    public void setIdcliente(String idcliente) {
+        this.idcliente = idcliente;
     }
 
     public String getDia() {
@@ -57,4 +59,6 @@ public class AgendamentoPojo implements Serializable {
     public void setHora(String hora) {
         this.hora = hora;
     }
+
 }
+

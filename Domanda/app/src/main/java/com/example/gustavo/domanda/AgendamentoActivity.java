@@ -1,8 +1,9 @@
 package com.example.gustavo.domanda;
 
 import android.app.DatePickerDialog;
-//import android.icu.text.SimpleDateFormat;
 import java.text.SimpleDateFormat;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,14 +19,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static com.example.gustavo.domanda.R.id.edtNome;
+import static com.example.gustavo.domanda.R.id.edtSobrenome;
 
 public class AgendamentoActivity extends AppCompatActivity {
 
@@ -40,6 +50,11 @@ public class AgendamentoActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
+    //private String dia;
+    //private String hora;
+    private Button botaoAgenda;
+    private String idprofissional;
+    private RequestQueue mVolleyRequest;
 
     //private horario adapter;
 
@@ -57,16 +72,20 @@ public class AgendamentoActivity extends AppCompatActivity {
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
         }
-        Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
 
         final Calendar myCalendar = Calendar.getInstance();
 
         p = (ProfissionalPojo) getIntent().getSerializableExtra("pro");
         //Log.d("ID PRO: ",p.getIdprofissional());
+        idprofissional = p.getIdprofissional();
 
-        //getAgenda(p.getIdprofissional());
+        mVolleyRequest = Volley.newRequestQueue(this);
+
+        getAgenda(idprofissional);
 
         listAgendamentos = ((ListView)findViewById(R.id.lvAgendamentos));
+        botaoAgenda = ((Button) findViewById(R.id.btnAgendar));
 
         EditText editText = ((EditText)findViewById(R.id.edtDia));
 
@@ -83,40 +102,45 @@ public class AgendamentoActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if(i == 0){
+                if(i == 1){
                     //Toast.makeText(getBaseContext(), "8:00 - 9:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "8:00 - 9:00";
-                }else if (i == 1){
+                }else if (i == 2){
                     //Toast.makeText(getBaseContext(), "9:00 - 10:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "9:00 - 10:00";
-                }else if (i == 2){
+                }else if (i == 3){
                     //Toast.makeText(getBaseContext(), "10:00 - 11:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "10:00 - 11:00";
-                }else if (i == 3){
+                }else if (i == 4){
                     //Toast.makeText(getBaseContext(), "11:00 - 12:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "11:00 - 12:00";
-                }else if (i == 4){
+                }else if (i == 5){
                     //Toast.makeText(getBaseContext(), "12:00 - 13:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "12:00 - 13:00";
-                }else if (i == 5){
+                }else if (i == 6){
                     //Toast.makeText(getBaseContext(), "13:00 - 14:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "13:00 - 14:00";
-                }else if (i == 6){
+                }else if (i == 7){
                     //Toast.makeText(getBaseContext(), "14:00 - 15:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "14:00 - 15:00";
-                }else if (i == 7){
+                }else if (i == 8){
                     //Toast.makeText(getBaseContext(), "15:00 - 16:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "15:00 - 16:00";
-                }else if (i == 8){
+                }else if (i == 9){
                     //Toast.makeText(getBaseContext(), "16:00 - 17:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "16:00 - 17:00";
-                }else if (i == 9){
+                }else if (i == 10){
                     //Toast.makeText(getBaseContext(), "17:00 - 18:00", Toast.LENGTH_LONG).show();
                     String dadoHora = "17:00 - 18:00";
+                }else{
+                    String dadoHora = "";
                 }
 
-                dadoHora = spinnerHorario.getSelectedItem().toString();
-                exibeHora();
+                if(spinnerHorario.getSelectedItemPosition()!=0) {
+                    dadoHora = spinnerHorario.getSelectedItem().toString();
+                    exibeHora();
+                }
+                //Log.d("HORA", dadoHora);
 
             }
 
@@ -167,44 +191,76 @@ public class AgendamentoActivity extends AppCompatActivity {
     //Final do onCreate
     }
 
+
     public void exibeDia(){
         final TextView tvDia = ((TextView) findViewById(R.id.tvDia));
         tvDia.setText(diaAgenda);
+        //dia = tvDia.toString();
     }
 
     public void exibeHora(){
         final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
         tvHora.setText(dadoHora);
+        //hora = tvHora.toString();
     }
 
 
     private void updateLabel(Calendar myCalendar) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         diaAgenda = sdf.format(myCalendar.getTime());
-        //dadoHora = spinnerHorario.getSelectedItem().toString();
         exibeDia();
         //Log.d("TAG", "DATA " + diaAgenda);
     }
 
-    public void agendar(View view) {
-//        final TextView tvDia = ((TextView) findViewById(R.id.tvDia));
-//        final TextView tvHora = ((TextView) findViewById(R.id.tvHora));
-        //dadoHora = spinnerHorario.getSelectedItem().toString();
+    public void agendar(View view) throws JSONException {
+        //Log.d("TAG", "idpro " + idprofissional + " idusuario " + idusuario + " nome " +nome+ " sobrenome " +sobrenome+ " dia " + dia + " hora " + hora);
+        if(idusuario != 0){
+            int opcao = 1; //Agendar
+            JSONObject agendaJsonObject = new JSONObject();
+            agendaJsonObject.put("idpro", idprofissional);
+            agendaJsonObject.put("idusuario", idusuario);
+            agendaJsonObject.put("nome", nome);
+            agendaJsonObject.put("sobrenome", sobrenome);
+            agendaJsonObject.put("dia", diaAgenda);
+            agendaJsonObject.put("hora", dadoHora);
+            agendaJsonObject.put("opcao", opcao);
+            agendaJsonObject.toString();
+            //Toast.makeText(getBaseContext(),"OBJETO: "+agendaJsonObject.toString(), Toast.LENGTH_LONG).show();
+            //Log.d("TAG", "Esse é o response: " + agendaJsonObject.toString());
 
-//        tvDia.setText(diaAgenda);
-//        tvHora.setText(dadoHora);
+            final JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST,
+                    "http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php", agendaJsonObject,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Toast.makeText(AgendamentoActivity.this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                            Intent intentConsulta = new Intent(AgendamentoActivity.this, MenuActivity.class);
+                            intentConsulta.putExtra("idusuario", idusuario);
+                            startActivity(intentConsulta);
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(AgendamentoActivity.this, "Tente novamente"+error, Toast.LENGTH_SHORT).show();
+                    Log.d("TAG", "ERRO!!: " + error);
+                }
+            });
 
-        //Log.d("TAG", "DATA " + diaAgenda + " HORA " +dadoHora);
-
+            mVolleyRequest.add(json);
+        }else{
+            Toast.makeText(getBaseContext(),"Desculpe, você precisa estar logado para fazer agendamento", Toast.LENGTH_LONG).show();
+            Log.d("TAG", "Desculpe, você precisa estar logado para fazer agendamento");
+        }
     }
 
 
-    public void getAgenda(final String idprofissional){
-
+    private void getAgenda(String idprofissional) {
+        //Toast.makeText(getBaseContext(), "Chamou getAgenda", Toast.LENGTH_LONG).show();
+        int opcao = 2; //mostrar agenda
         final ArrayList<AgendamentoPojo> agenda = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(this);
         GsonRequest<AgendamentoPojo[]> request = new GsonRequest<>("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php?" +
-                "idpro="+idprofissional, AgendamentoPojo[].class, null, new Response.Listener<AgendamentoPojo[]>() {
+                "idpro="+idprofissional+"&opcao="+opcao, AgendamentoPojo[].class, null, new Response.Listener<AgendamentoPojo[]>() {
             @Override
             public void onResponse(AgendamentoPojo[] response) {
                 //Log.d("TAG", "Esse é o response: " + response);
@@ -229,7 +285,6 @@ public class AgendamentoActivity extends AppCompatActivity {
         });
         queue.add(request);
     }
-
 
 
 }
