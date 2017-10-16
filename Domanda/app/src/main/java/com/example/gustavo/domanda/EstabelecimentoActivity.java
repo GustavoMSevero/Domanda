@@ -27,6 +27,8 @@ public class EstabelecimentoActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
+    private String estabelecimento;
+    private String unidade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,10 @@ public class EstabelecimentoActivity extends AppCompatActivity {
             idusuario = extra.getInt("idusuario");
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
+            //it.putExtra("estab", e);
+            estabelecimento = extra.getString("estabelecimento");
         }
-        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario+" estabelecimento "+estabelecimento, Toast.LENGTH_LONG).show();
 
         listEstabelecimentos = ((ListView)findViewById(R.id.lvEstabelecimentos));
 
@@ -51,10 +55,13 @@ public class EstabelecimentoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 EstabelecimentoPojo u = (EstabelecimentoPojo) listEstabelecimentos.getItemAtPosition(position);
                 Intent it = new Intent(EstabelecimentoActivity.this, UnidadeActivity.class);
+                unidade = u.nome;
                 it.putExtra("unid", u);
+                it.putExtra("unidade", unidade);
                 it.putExtra("idusuario", idusuario);
                 it.putExtra("nome", nome);
                 it.putExtra("sobrenome", sobrenome);
+                it.putExtra("estabelecimento", estabelecimento);
                 startActivity(it);
             }
         });
@@ -77,6 +84,7 @@ public class EstabelecimentoActivity extends AppCompatActivity {
                     esta.cid = response[i].cid;
                     esta.uf = response[i].uf;
                     cia.add(esta);
+                    //Log.d("TAG","estabelecimento: "+esta.toString());
                 }
 
                 ArrayAdapter<EstabelecimentoPojo> adapter = new ArrayAdapter<EstabelecimentoPojo>(EstabelecimentoActivity.this, android.R.layout.simple_expandable_list_item_1, cia);

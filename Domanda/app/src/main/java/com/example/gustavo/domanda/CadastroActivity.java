@@ -74,7 +74,7 @@ public class CadastroActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             Log.d("TAG", "ISSO É O QUE VEM!!: " + response);
-                            Toast.makeText(getBaseContext(),"Dados retornados: "+response, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getBaseContext(),"Dados retornados: "+response, Toast.LENGTH_LONG).show();
                             try {
                                 mensagem.setText(response.getString("msg"));
                             } catch (JSONException e) {

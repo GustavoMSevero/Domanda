@@ -10,12 +10,16 @@ public class Consultar implements Serializable {
 
     private Integer idAgendamento;
     private Integer idCliente;
+    private String estabelecimento;
+    private String unidade;
     private String dia;
     private String hora;
 
-    public Consultar(Integer idAgendamento, Integer idCliente, String dia, String hora) {
+    public Consultar(Integer idAgendamento, Integer idCliente, String estabelecimento, String unidade, String dia, String hora) {
         this.idAgendamento = idAgendamento;
         this.idCliente = idCliente;
+        this.estabelecimento = estabelecimento;
+        this.unidade = unidade;
         this.dia = dia;
         this.hora = hora;
     }
@@ -33,6 +37,22 @@ public class Consultar implements Serializable {
 
     public Integer getIdCliente() {
         return idCliente;
+    }
+
+    public String getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(String estabelecimento) {
+        this.estabelecimento = estabelecimento;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
     }
 
     public void setIdCliente(Integer idCliente) {

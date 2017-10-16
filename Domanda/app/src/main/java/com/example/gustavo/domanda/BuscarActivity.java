@@ -36,6 +36,7 @@ public class BuscarActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
+    private String estabelecimento;
 
     private EstabelecimentoAdapter adapter;
     private ArrayList<EstabelecimentoPojo> estabelecimentos;
@@ -80,13 +81,17 @@ public class BuscarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EstabelecimentoPojo e = (EstabelecimentoPojo) lvEstabelecimentos.getItemAtPosition(position);
                 Intent it = new Intent(BuscarActivity.this, UnidadeActivity.class);
+                estabelecimento = e.nome;
                 it.putExtra("estab", e);
+                it.putExtra("estabelecimento", estabelecimento);
                 it.putExtra("idusuario", idusuario);
                 it.putExtra("nome", nome);
                 it.putExtra("sobrenome", sobrenome);
                 startActivity(it);
+                //Log.d("TAG","estabelecimento: "+it.toString());
             }
         });
+
 
         // Colocado os valores no spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

@@ -20,6 +20,7 @@
         android:ems="10"
         android:hint="e-mail"
         android:inputType="textEmailAddress"
+        android:text="flavia@flavia.com"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,6 +38,7 @@
         android:ems="10"
         android:hint="senha"
         android:inputType="textPassword"
+        android:text="flavia123"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />

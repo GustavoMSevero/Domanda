@@ -26,6 +26,9 @@ public class ProfissionalActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
+    private String unid;
+    private String estabelecimento;
+    private String profissional;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,16 @@ public class ProfissionalActivity extends AppCompatActivity {
             idusuario = extra.getInt("idusuario");
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
+            unid = extra.getString("unidade");
+            sobrenome = extra.getString("sobrenome");
+            estabelecimento = extra.getString("estabelecimento");
         }
-        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "dados no ProfissionalActivity "+extra.toString(), Toast.LENGTH_LONG).show();
 
         listPro =  ((ListView)findViewById(R.id.lvProfissional));
 
         u = (UnidadePojo) getIntent().getSerializableExtra("unid");
-        //Log.d("regys",e.toString());
+        Log.d("DADOS PA",extra.toString());
         //Log.d("ID UNID: ",u.getIdunidade());
 
         getProfs(u.getIdunidade());
@@ -56,10 +62,13 @@ public class ProfissionalActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ProfissionalPojo p = (ProfissionalPojo) listPro.getItemAtPosition(i);
                 Intent it = new Intent(ProfissionalActivity.this, AgendamentoActivity.class);
+                profissional = p.nome.toString();
                 it.putExtra("pro", p);
                 it.putExtra("idusuario", idusuario);
                 it.putExtra("nome", nome);
                 it.putExtra("sobrenome", sobrenome);
+                it.putExtra("unid", unid);
+                it.putExtra("estabelecimento", estabelecimento);
                 startActivity(it);
 
             }

@@ -57,8 +57,12 @@ public class ConsultarActivity extends AppCompatActivity {
                 Log.d("TAG", "Retorno... " + response);
                 for (int i = 0; i < response.length; i++) {
                     ConsultarPojo agc = new ConsultarPojo();
+                    agc.estabelecimento = response[i].estabelecimento;
+                    agc.unidade = response[i].unidade;
                     agc.dia = response[i].dia;
                     agc.hora = response[i].hora;
+                    agc.nome = response[i].nome;
+                    agc.funcao = response[i].funcao;
                     agendaCliente.add(agc);
                 }
 

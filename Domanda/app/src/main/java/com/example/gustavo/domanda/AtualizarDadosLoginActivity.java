@@ -56,7 +56,7 @@ public class AtualizarDadosLoginActivity extends AppCompatActivity {
         RequestParams rp = new RequestParams();
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://www.reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqDataCliJson.php?opcao="+opcao+"&idusuario="+idusuario, rp, new TextHttpResponseHandler() {
+        client.get("http://www.reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqDataCliJson.php?opcao=" + opcao + "&idusuario=" + idusuario, rp, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Toast.makeText(getBaseContext(), "Problema na conexao!"+statusCode, Toast.LENGTH_LONG).show();
@@ -64,16 +64,18 @@ public class AtualizarDadosLoginActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
+
                 try {
                     JSONObject obj = new JSONObject(responseString);
                     String retorno = "";
-                    Toast.makeText(AtualizarDadosLoginActivity.this, "response: "+responseString, Toast.LENGTH_SHORT).show();
+
                     if (!obj.has("erro")) {
                         retorno += "\n" + obj.getString("idusuario");
                         retorno += "\n" + obj.getString("nome");
                         retorno += "\n" + obj.getString("sobrenome");
                         retorno += "\n" + obj.getString("email");
-                        //Toast.makeText(getBaseContext(),"Dados retornados: "+retorno, Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(getBaseContext(),"Dados retornados: "+retorno, Toast.LENGTH_LONG).show();
 
                         EditText nome = (EditText) findViewById(R.id.edtNome);
                         EditText sobrenome = (EditText) findViewById(R.id.edtSobrenome);
@@ -84,12 +86,56 @@ public class AtualizarDadosLoginActivity extends AppCompatActivity {
                         email.setText(obj.optString("email"), TextView.BufferType.EDITABLE);
                     }
 
-                } catch (JSONException e){
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-
         });
+//        client.get("http://www.reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqDataCliJson.php?opcao="+opcao+"&idusuario="+idusuario, rp, new TextHttpResponseHandler() {
+//
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//                Toast.makeText(getBaseContext(), "Problema na conexao!"+statusCode, Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+//                //Toast.makeText(getBaseContext(), "responseString "+responseString, Toast.LENGTH_LONG).show();
+//                Log.d("TAG", "responseString"+responseString);
+//                try {
+//                    JSONObject obj = new JSONObject(responseString);
+//                    String retorno = "";
+//                    Toast.makeText(AtualizarDadosLoginActivity.this, "response: "+responseString, Toast.LENGTH_SHORT).show();
+//
+////                    JSONArray jsonarray = new JSONArray(responseString);
+////                    for (int i = 0; i < jsonarray.length(); i++) {
+////                        JSONObject jsonobject = jsonarray.getJSONObject(i);
+////                        String name = jsonobject.getString("name");
+////                        String url = jsonobject.getString("url");
+////                    }
+//
+//                    if (!obj.has("erro")) {
+//                        retorno += "\n" + obj.getString("idusuario");
+//                        retorno += "\n" + obj.getString("nome");
+//                        retorno += "\n" + obj.getString("sobrenome");
+//                        retorno += "\n" + obj.getString("email");
+//                        Toast.makeText(getBaseContext(),"Dados retornados: "+retorno, Toast.LENGTH_LONG).show();
+//
+//                        EditText nome = (EditText) findViewById(R.id.edtNome);
+//                        EditText sobrenome = (EditText) findViewById(R.id.edtSobrenome);
+//                        EditText email = (EditText) findViewById(R.id.edtEmail);
+//
+//                        nome.setText(obj.optString("nome").toString(), TextView.BufferType.EDITABLE);
+//                        sobrenome.setText(obj.optString("sobrenome"), TextView.BufferType.EDITABLE);
+//                        email.setText(obj.optString("email"), TextView.BufferType.EDITABLE);
+//                    }
+//
+//                } catch (JSONException e){
+//                    Log.d("TAG", "JSONException"+e);
+//                }
+//            }
+//
+//        });
     }
 
 }

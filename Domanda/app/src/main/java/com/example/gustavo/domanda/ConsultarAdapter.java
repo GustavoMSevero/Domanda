@@ -36,6 +36,8 @@ public class ConsultarAdapter extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.linha_consultar, null);
         }
 
+        TextView estabelecimento = (TextView) convertView.findViewById(R.id.tvEstabelecimento);
+        TextView unidade = (TextView) convertView.findViewById(R.id.tvUnidade);
         TextView dia = (TextView) convertView.findViewById(R.id.tvDia);
         TextView hora = (TextView) convertView.findViewById(R.id.tvHora);
 

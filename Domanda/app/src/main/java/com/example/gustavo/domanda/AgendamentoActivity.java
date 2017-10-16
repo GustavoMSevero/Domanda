@@ -50,13 +50,14 @@ public class AgendamentoActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
-    //private String dia;
-    //private String hora;
+
     private Button botaoAgenda;
     private String idprofissional;
     private RequestQueue mVolleyRequest;
+    private String estabelecimento;
+    private String unidade;
+    private String profissional;
 
-    //private horario adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,13 @@ public class AgendamentoActivity extends AppCompatActivity {
             idusuario = extra.getInt("idusuario");
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
+            estabelecimento = extra.getString("estabelecimento");
+            idprofissional = extra.getString("pro");
+            profissional = extra.getString("profissinal");
+            unidade = extra.getString("unid");
         }
-        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "extra "+extra, Toast.LENGTH_SHORT).show();
+        Log.d("DADOS AA: ",extra.toString());
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -213,7 +219,7 @@ public class AgendamentoActivity extends AppCompatActivity {
     }
 
     public void agendar(View view) throws JSONException {
-        //Log.d("TAG", "idpro " + idprofissional + " idusuario " + idusuario + " nome " +nome+ " sobrenome " +sobrenome+ " dia " + dia + " hora " + hora);
+        //Log.d("TAG", "idpro " + idprofissional + " idusuario " + idusuario + " nome " +nome+ " sobrenome " +sobrenome+ " estabelecimento " + estabelecimento + " unidade " + unid);
         if(idusuario != 0){
             int opcao = 1; //Agendar
             JSONObject agendaJsonObject = new JSONObject();
@@ -221,18 +227,21 @@ public class AgendamentoActivity extends AppCompatActivity {
             agendaJsonObject.put("idusuario", idusuario);
             agendaJsonObject.put("nome", nome);
             agendaJsonObject.put("sobrenome", sobrenome);
+            agendaJsonObject.put("estabelecimento", estabelecimento);
+            agendaJsonObject.put("unidade", unidade);
             agendaJsonObject.put("dia", diaAgenda);
             agendaJsonObject.put("hora", dadoHora);
             agendaJsonObject.put("opcao", opcao);
             agendaJsonObject.toString();
             //Toast.makeText(getBaseContext(),"OBJETO: "+agendaJsonObject.toString(), Toast.LENGTH_LONG).show();
-            //Log.d("TAG", "Esse é o response: " + agendaJsonObject.toString());
+            //Log.d("TAG", "Isso é o que vai: " + agendaJsonObject.toString());
 
             final JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST,
                     "http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php", agendaJsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            //Log.d("TAG", "Esse é o response: " + response.toString());
                             Toast.makeText(AgendamentoActivity.this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show();
                             Intent intentConsulta = new Intent(AgendamentoActivity.this, MenuActivity.class);
                             intentConsulta.putExtra("idusuario", idusuario);

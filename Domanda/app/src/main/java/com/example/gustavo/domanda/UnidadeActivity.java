@@ -29,6 +29,7 @@ public class UnidadeActivity extends AppCompatActivity {
     private int idusuario;
     private String nome;
     private String sobrenome;
+    private char estabelecimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,14 @@ public class UnidadeActivity extends AppCompatActivity {
             idusuario = extra.getInt("idusuario");
             nome = extra.getString("nome");
             sobrenome = extra.getString("sobrenome");
+            //estabelecimento = extra.getChar("estabelecimento");
         }
-        //Toast.makeText(this, "id usuario "+idusuario, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "id usuario "+idusuario+" estabelecimento "+e.toString(), Toast.LENGTH_SHORT).show();
 
         e = (EstabelecimentoPojo) getIntent().getSerializableExtra("estab");
-        //Log.d("regys",e.toString());
+        Log.d("Nome Estabelecimento",e.nome.toString());
         //Log.d("ID ESTAB: ",e.getIdestabelecimento());
+        //Toast.makeText(this, "id usuario "+idusuario+" estabelecimento "+e.toString(), Toast.LENGTH_LONG).show();
 
         getUnidades(e.getIdestabelecimento());
 
@@ -58,9 +61,11 @@ public class UnidadeActivity extends AppCompatActivity {
                 UnidadePojo u = (UnidadePojo) lvUni.getItemAtPosition(position);
                 Intent it = new Intent(UnidadeActivity.this, ProfissionalActivity.class);
                 it.putExtra("unid", u);
+                it.putExtra("unidade", u.getUnidade());
                 it.putExtra("idusuario", idusuario);
                 it.putExtra("nome", nome);
                 it.putExtra("sobrenome", sobrenome);
+                it.putExtra("estabelecimento", e.nome.toString());
                 startActivity(it);
             }
         });
