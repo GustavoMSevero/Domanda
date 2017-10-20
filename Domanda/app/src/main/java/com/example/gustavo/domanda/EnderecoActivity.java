@@ -83,7 +83,6 @@ public class EnderecoActivity extends AppCompatActivity {
 
                 try {
                     JSONObject obj = new JSONObject(responseString);
-
                     String retorno = "";
 
                     if (!obj.has("erro")) {
