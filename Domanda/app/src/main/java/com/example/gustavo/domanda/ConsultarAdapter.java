@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gustavo on 06/09/17.
@@ -18,9 +20,10 @@ import java.util.ArrayList;
 public class ConsultarAdapter extends ArrayAdapter {
 
     private Context context;
-    private ArrayList<ConsultarPojo> consultas;
+    //private ArrayList<ConsultarPojo> consultas;
+    private List<ConsultarPojo> consultas;
 
-    public ConsultarAdapter(@NonNull Context context, ArrayList<ConsultarPojo> consultas) {
+    public ConsultarAdapter(@NonNull Context context, List<ConsultarPojo> consultas) {
         super(context, 0, consultas);
         this.context = context;
         this.consultas = consultas;
@@ -30,12 +33,13 @@ public class ConsultarAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
 
-        ConsultarPojo consulta  = consultas.get(position);
+        final ConsultarPojo consulta  = consultas.get(position);
 
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.linha_consultar, null);
         }
 
+        Button botao = (Button) convertView.findViewById(R.id.botao);
         TextView estabelecimento = (TextView) convertView.findViewById(R.id.tvEstabelecimento);
         TextView unidade = (TextView) convertView.findViewById(R.id.tvUnidade);
         TextView dia = (TextView) convertView.findViewById(R.id.tvDia);
@@ -43,6 +47,17 @@ public class ConsultarAdapter extends ArrayAdapter {
 
         dia.setText(consulta.getDia());
         hora.setText(consulta.getHora());
+        unidade.setText(consulta.getUnidade());
+        estabelecimento.setText(consulta.getEstabelecimento());
+
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,""+consulta.getEstabelecimento(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         return convertView;
 
