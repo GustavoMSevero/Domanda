@@ -1,15 +1,11 @@
 package com.example.gustavo.domanda;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -67,7 +63,9 @@ public class ConsultarActivity extends AppCompatActivity {
                     agendaCliente.add(agc);
                 }
 
-                ArrayAdapter<ConsultarPojo> adapter = new ArrayAdapter<ConsultarPojo>(ConsultarActivity.this, android.R.layout.simple_list_item_1, agendaCliente);
+                //ArrayAdapter<ConsultarPojo> adapter = new ArrayAdapter<ConsultarPojo>(ConsultarActivity.this, android.R.layout.simple_list_item_1, agendaCliente);
+
+                ConsultarAdapter adapter = new ConsultarAdapter(getApplicationContext(),agendaCliente);
                 lvReservas = ((ListView)findViewById(R.id.lvReservas));
                 lvReservas.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
@@ -82,7 +80,7 @@ public class ConsultarActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    public void cancelar(View view) {
-        //AlertDialog cancelar = new AlertDialog();
-    }
+//    public void cancelar(View view) {
+//        //AlertDialog cancelar = new AlertDialog();
+//    }
 }
