@@ -133,6 +133,7 @@ public class BuscarActivity extends AppCompatActivity {
 
         String dadoBusca = spinnerEstabelecimento.getSelectedItem().toString();
         //Toast.makeText(this,"Valor selecionado é: "+dadoBusca, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqCiaJson.php?\"tipo="+dadoBusca, Toast.LENGTH_SHORT).show();
 
         final ArrayList<EstabelecimentoPojo> cia = new ArrayList<>();
         RequestQueue rq = Volley.newRequestQueue(this);

@@ -242,7 +242,7 @@ public class AgendamentoActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             //Log.d("TAG", "Esse é o response: " + response.toString());
-                            Toast.makeText(AgendamentoActivity.this, "Agendamento realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AgendamentoActivity.this, "Agendamento realizado com sucesso!", Toast.LENGTH_LONG).show();
                             Intent intentConsulta = new Intent(AgendamentoActivity.this, MenuActivity.class);
                             intentConsulta.putExtra("idusuario", idusuario);
                             startActivity(intentConsulta);

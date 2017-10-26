@@ -1,6 +1,7 @@
 package com.example.gustavo.domanda;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,40 +14,35 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Gustavo on 06/09/17.
+ * Created by Gustavo on 25/10/17.
  */
 
-public class ConsultarAdapter extends ArrayAdapter {
+public class BuscarAdapter extends ArrayAdapter {
 
     private Context context;
-    private ArrayList<ConsultarPojo> consultas;
+    private ArrayList<BuscarPojo> buscas;
 
-    public ConsultarAdapter(@NonNull Context context, ArrayList<ConsultarPojo> consultas) {
-        super(context, 0, consultas);
+    public BuscarAdapter(@NonNull Context context, ArrayList<BuscarPojo> buscas) {
+        super(context, 0, buscas);
         this.context = context;
-        this.consultas = consultas;
+        this.buscas = buscas;
     }
 
-    @NonNull
-    @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
 
-        ConsultarPojo consulta  = consultas.get(position);
+        BuscarPojo busca  = buscas.get(position);
 
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.linha_consult, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.linha_estabelecimento, null);
         }
 
         TextView estabelecimento = (TextView) convertView.findViewById(R.id.tvEstabelecimento);
-        TextView unidade = (TextView) convertView.findViewById(R.id.tvUnidade);
-        TextView dia = (TextView) convertView.findViewById(R.id.tvDia);
-        TextView hora = (TextView) convertView.findViewById(R.id.tvHora);
+        TextView endereco = (TextView) convertView.findViewById(R.id.tvEndereco);
+        TextView numero = (TextView) convertView.findViewById(R.id.tvNumero);
+        TextView cidade = (TextView) convertView.findViewById(R.id.tvCidade);
+        TextView uf = (TextView) convertView.findViewById(R.id.tvUF);
         Button cancelar = (Button) convertView.findViewById(R.id.btnCancelar);
 
-        dia.setText(consulta.getDia());
-        hora.setText(consulta.getHora());
-
         return convertView;
-
     }
 }

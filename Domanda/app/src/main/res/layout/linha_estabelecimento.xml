@@ -54,4 +54,5 @@
         android:text="TextView"
         app:layout_constraintLeft_toRightOf="@+id/tvCidade"
         app:layout_constraintTop_toBottomOf="@+id/tvNumero" />
+
 </android.support.constraint.ConstraintLayout>
