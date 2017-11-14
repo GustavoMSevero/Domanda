@@ -45,7 +45,6 @@ public class ConsultarAdapter extends ArrayAdapter {
         TextView hora = (TextView) convertView.findViewById(R.id.tvHora);
         TextView nome = (TextView) convertView.findViewById(R.id.tvNome);
         TextView funcao = (TextView) convertView.findViewById(R.id.tvFuncao);
-        Button cancelar = (Button) convertView.findViewById(R.id.btnCancelar);
 
         dia.setText(consulta.getDia());
         hora.setText(consulta.getHora());
@@ -53,14 +52,6 @@ public class ConsultarAdapter extends ArrayAdapter {
         estabelecimento.setText(consulta.getEstabelecimento());
         nome.setText(consulta.getNome());
         funcao.setText(consulta.getFuncao());
-
-        cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,""+consulta.getEstabelecimento(),Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
 
         return convertView;

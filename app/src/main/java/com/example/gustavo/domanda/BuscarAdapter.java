@@ -41,7 +41,6 @@ public class BuscarAdapter extends ArrayAdapter {
         TextView numero = (TextView) convertView.findViewById(R.id.tvNumero);
         TextView cidade = (TextView) convertView.findViewById(R.id.tvCidade);
         TextView uf = (TextView) convertView.findViewById(R.id.tvUF);
-        Button cancelar = (Button) convertView.findViewById(R.id.btnCancelar);
 
         return convertView;
     }
