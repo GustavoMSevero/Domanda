@@ -46,7 +46,7 @@ public class ConsultarActivity extends AppCompatActivity {
 
     }
 
-    private void getAgenda(int idusuario) {
+    private void getAgenda(final int idusuario) {
 
         int opcao = 3; //mostrar agenda do cliente
         final ArrayList<ConsultarPojo> agendaCliente = new ArrayList<>();
@@ -80,6 +80,7 @@ public class ConsultarActivity extends AppCompatActivity {
 
                         Intent intentDetalhesAgendamento = new Intent(ConsultarActivity.this, DetalhesAgendamentoActivity.class);
                         intentDetalhesAgendamento.putExtra("idagendamento", idagendamento);
+                        intentDetalhesAgendamento.putExtra("idusuario", idusuario);
                         startActivity(intentDetalhesAgendamento);
                     }
                 });

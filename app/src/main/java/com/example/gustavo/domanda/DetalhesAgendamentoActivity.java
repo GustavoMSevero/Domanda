@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,6 +26,7 @@ public class DetalhesAgendamentoActivity extends AppCompatActivity {
     private Button botaoCancelar;
     private String idagendamento;
     private RequestQueue mVolleyRequest;
+    public int idusuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class DetalhesAgendamentoActivity extends AppCompatActivity {
 
         if(extra != null){
             idagendamento = extra.getString("idagendamento");
+            idusuario = extra.getInt("idusuario");
         }
 
         botaoCancelar = (Button) findViewById(R.id.btnCancelarAgendamento);
@@ -46,7 +49,7 @@ public class DetalhesAgendamentoActivity extends AppCompatActivity {
         botaoCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.d("TAG","Apagar agendamento "+idagendamento);
+                //Log.d("TAG","Apagar agendamento "+idagendamento+" e idusuario "+idusuario);
 
                 JSONObject dadoJson = new JSONObject();
                 try {
@@ -60,6 +63,10 @@ public class DetalhesAgendamentoActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             Log.d("Dado que vem ", response.toString());
+                            Toast.makeText(DetalhesAgendamentoActivity.this, "Agendamento cancelado com sucesso!", Toast.LENGTH_LONG).show();
+                            Intent intentVoltarConsulta = new Intent(DetalhesAgendamentoActivity.this, ConsultarActivity.class);
+                            intentVoltarConsulta.putExtra("idusuario", idusuario);
+                            startActivity(intentVoltarConsulta);
                         }
                     }, new Response.ErrorListener() {
                         @Override
