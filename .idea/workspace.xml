@@ -19,9 +19,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_detalhes_agendamento.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_detalhes_agendamento.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,10 +46,9 @@
       <file leaf-file-name="ConsultarActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="-54">
+              <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1796#3718#0" expanded="true" />
                 <element signature="e#2669#2684#0" expanded="true" />
                 <element signature="e#2932#3690#0" expanded="true" />
@@ -64,17 +61,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetalhesAgendamentoActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DetalhesAgendamentoActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+            <state relative-caret-position="21">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="e#1571#3321#0" expanded="true" />
                 <element signature="e#2275#2956#0" expanded="true" />
                 <element signature="e#2955#2956#0" expanded="true" />
                 <element signature="e#3320#3321#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgendamentoActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1816,7 +1823,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/BuscarAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/linha_consultar.xml" />
@@ -1826,6 +1832,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_detalhes_agendamento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java" />
       </list>
     </option>
   </component>
@@ -2043,7 +2050,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513013883608" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513014821075" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2091,7 +2098,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513013883608" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513014821075" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2274,7 +2281,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513013883609" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513014821076" />
       </method>
     </configuration>
     <list size="1">
@@ -2317,7 +2324,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="23" width="1260" height="709" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2331,7 +2337,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12816189" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30860034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30860034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2400,7 +2406,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1796#3718#0" expanded="true" />
             <element signature="e#2669#2684#0" expanded="true" />
             <element signature="e#2932#3690#0" expanded="true" />
@@ -2555,14 +2560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="238" column="76" lean-forward="false" selection-start-line="238" selection-start-column="76" selection-end-line="238" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_detalhes_agendamento.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -2574,12 +2571,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#1571#3321#0" expanded="true" />
+            <element signature="e#2275#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="e#3320#3321#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/ConsultarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="-54">
+          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1796#3718#0" expanded="true" />
             <element signature="e#2669#2684#0" expanded="true" />
             <element signature="e#2932#3690#0" expanded="true" />
@@ -2591,16 +2600,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/DetalhesAgendamentoActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/gustavo/domanda/AgendamentoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
-          <folding>
-            <element signature="e#1571#3321#0" expanded="true" />
-            <element signature="e#2275#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="e#3320#3321#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

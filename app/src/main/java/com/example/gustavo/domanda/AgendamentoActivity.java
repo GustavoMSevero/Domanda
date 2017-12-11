@@ -233,15 +233,13 @@ public class AgendamentoActivity extends AppCompatActivity {
             agendaJsonObject.put("hora", dadoHora);
             agendaJsonObject.put("opcao", opcao);
             agendaJsonObject.toString();
-            //Toast.makeText(getBaseContext(),"OBJETO: "+agendaJsonObject.toString(), Toast.LENGTH_LONG).show();
-           // Log.d("TAG", "Isso é o que vai: " + agendaJsonObject.toString());
 
             final JsonObjectRequest json = new JsonObjectRequest(Request.Method.POST,
                     "http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php", agendaJsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.d("TAG", "Esse é o response: " + response.toString());
+                            //Log.d("TAG", "Esse é o response: " + response.toString());
                             Toast.makeText(AgendamentoActivity.this, "Agendamento realizado com sucesso!", Toast.LENGTH_LONG).show();
                             Intent intentConsulta = new Intent(AgendamentoActivity.this, MenuActivity.class);
                             intentConsulta.putExtra("idusuario", idusuario);
