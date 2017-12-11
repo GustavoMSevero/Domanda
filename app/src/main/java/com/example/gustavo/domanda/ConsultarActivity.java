@@ -1,11 +1,15 @@
 package com.example.gustavo.domanda;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -49,11 +53,13 @@ public class ConsultarActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         GsonRequest<ConsultarPojo[]> request = new GsonRequest<>("http://reservacomdomanda.com/areaAdmin/api/admin_estabelecimento/reqScheduleProJson.php?" +
                 "idcliente="+idusuario+"&opcao="+opcao, ConsultarPojo[].class, null, new Response.Listener<ConsultarPojo[]>() {
+
             @Override
-            public void onResponse(ConsultarPojo[] response) {
-                Log.d("TAG", "Retorno... " + response);
+            public void onResponse(final ConsultarPojo[] response) {
+                //Log.d("TAG", "Retorno... " + response.toString());
                 for (int i = 0; i < response.length; i++) {
                     ConsultarPojo agc = new ConsultarPojo();
+                    agc.idagendamentoProfissional = response[i].idagendamentoProfissional;
                     agc.estabelecimento = response[i].estabelecimento;
                     agc.unidade = response[i].unidade;
                     agc.dia = response[i].dia;
@@ -63,12 +69,21 @@ public class ConsultarActivity extends AppCompatActivity {
                     agendaCliente.add(agc);
                 }
 
-                //ArrayAdapter<ConsultarPojo> adapter = new ArrayAdapter<ConsultarPojo>(ConsultarActivity.this, android.R.layout.simple_list_item_1, agendaCliente);
-
-                ConsultarAdapter adapter = new ConsultarAdapter(getApplicationContext(),agendaCliente);
+                ArrayAdapter<ConsultarPojo> adapter = new ArrayAdapter<ConsultarPojo>(ConsultarActivity.this, android.R.layout.simple_list_item_1, agendaCliente);
                 lvReservas = ((ListView)findViewById(R.id.lvReservas));
                 lvReservas.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                lvReservas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Log.d("Mensagem", "Id "+response[i].idagendamentoProfissional);
+                        String idagendamento = response[i].idagendamentoProfissional;
+
+                        Intent intentDetalhesAgendamento = new Intent(ConsultarActivity.this, DetalhesAgendamentoActivity.class);
+                        intentDetalhesAgendamento.putExtra("idagendamento", idagendamento);
+                        startActivity(intentDetalhesAgendamento);
+                    }
+                });
+
 
             }
         }, new Response.ErrorListener() {

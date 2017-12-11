@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("Retorno", response.toString());
                         int idusuario = 0;
                         String nomeUsuario = null;
                         String sobrenomeUsuario = null;

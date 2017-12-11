@@ -35,5 +35,6 @@
     <string name="title_activity_cadastro">CadastroActivity</string>
     <string name="title_activity_atualizar_dados">AtualizarDadosActivity</string>
     <string name="title_activity_endereco">EnderecoActivity</string>
+    <string name="title_activity_detalhes_agendamento">DetalhesAgendamentoActivity</string>
 
 </resources>
